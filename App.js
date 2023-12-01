@@ -1,20 +1,43 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import AddStudent from './component/AddStudent';
+import StudentList from './component/StudentList';
+import './css/styles.css';
 
-export default function App() {
+const App = () => {
+  const [refreshList, setRefreshList] = useState(false);
+  const [showStudentList, setShowStudentList] = useState(false);
+
+  const handleAddStudent = () => {
+
+    setRefreshList(true);
+  };
+
+  const handleViewStudentList = () => {
+
+    setRefreshList(true);
+
+    setShowStudentList(true);
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Container>
+      <Row>
+        <Col>
+          <h1></h1>
+          {!showStudentList && (
+            <AddStudent
+              onAddStudent={handleAddStudent}
+              onViewStudentList={handleViewStudentList}
+            />
+          )}
+        </Col>
+        <Col>
+          {showStudentList && <StudentList key={refreshList} />}
+        </Col>
+      </Row>
+    </Container>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;

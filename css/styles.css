@@ -1,0 +1,24 @@
+/* styles.css */
+
+.table-container {
+    margin: 5px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid rgb(15, 27, 61);
+  }
+
+  th {
+    background-color: rgb(255, 187, 0);
+  }
+
+  tr:hover {
+    background-color: rgb(181, 212, 109);
+  }
